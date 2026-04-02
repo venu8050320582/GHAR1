@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h1>Property in {{ house.area }}, {{ house.city }}</h1>
+            <hr>
+            <div style="display: flex; justify-content: space-between;">
+                <div>
+                    <h3>Pricing</h3>
+                    <p>Monthly Rent: ₹{{ house.rent }}</p>
+                    <p>Deposit: ₹{{ house.deposit }}</p>
+                    <p>Tenant Preferred: {{ house.tenant_type }}</p>
+                </div>
+                <div>
+                    <h3>Amenities</h3>
+                    <p>Not available</p>
+                </div>
+            </div>
+            <div style="background: #f9f9f9; padding: 20px; border-radius: 5px;">
+                <h3>Owner Contact</h3>
+                <p>Name: {{ owner.name }}</p>
+                <p>Mobile: <b>{{ owner.mobile }}</b></p>
+            </div>
+            <br>
+            <a href="{{ url_for('search_house') }}">Back to Search</a>
+        </div>
+    </div>
+</body>
+</html>

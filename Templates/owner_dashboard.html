@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <nav>
+        <h2>GHAR | Owner Panel</h2>
+        <div>
+            <span>Welcome, {{ session['user_name'] }}</span>
+            <a href="{{ url_for('logout') }}">Logout</a>
+        </div>
+    </nav>
+    <div class="container">
+        <div style="display:flex; justify-content: space-between;">
+            <h3>Your Listed Houses</h3>
+            <a href="{{ url_for('add_house') }}" class="btn btn-primary">+ Add New House</a>
+        </div>
+        <div class="card-container">
+            {% for h in houses %}
+            <div class="card">
+                <h4>{{ h.area }}, {{ h.city }}</h4>
+                <p>Rent: ₹{{ h.rent }} | Deposit: ₹{{ h.deposit }}</p>
+                <p>Status: <b>{{ h.status }}</b></p>
+                <a href="{{ url_for('toggle_status', id=h.id) }}" class="btn">Change Status</a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

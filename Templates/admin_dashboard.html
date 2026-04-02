@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard | GHAR</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+<header class="admin-header">
+    <h1>🏠 GHAR – Admin Dashboard</h1>
+    <a href="/logout" class="logout-btn">Logout</a>
+</header>
+
+<!-- OWNERS -->
+<section class="admin-section">
+    <h2>🏠 House Owners</h2>
+    <table>
+        <tr>
+            <th>ID</th><th>Name</th><th>Mobile</th><th>Status</th><th>Action</th>
+        </tr>
+        {% for o in owners %}
+        <tr>
+            <td>{{ o.id }}</td>
+            <td>{{ o.name }}</td>
+            <td>{{ o.mobile }}</td>
+            <td>{{ o.status }}</td>
+            <td>
+                <a href="/admin/toggle_user/{{ o.id }}">
+                    {% if o.status == 'active' %}Block{% else %}Unblock{% endif %}
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</section>
+
+<!-- CUSTOMERS -->
+<section class="admin-section">
+    <h2>👤 Customers</h2>
+    <table>
+        <tr>
+            <th>ID</th><th>Name</th><th>Mobile</th><th>Status</th><th>Action</th>
+        </tr>
+        {% for c in customers %}
+        <tr>
+            <td>{{ c.id }}</td>
+            <td>{{ c.name }}</td>
+            <td>{{ c.mobile }}</td>
+            <td>{{ c.status }}</td>
+            <td>
+                <a href="/admin/toggle_user/{{ c.id }}">
+                    {% if c.status == 'active' %}Block{% else %}Unblock{% endif %}
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</section>
+
+<!-- HOUSES -->
+<section class="admin-section">
+    <h2>🏘️ All Houses</h2>
+    <table>
+        <tr>
+            <th>ID</th><th>Owner</th><th>Area</th><th>City</th>
+            <th>Rent</th><th>Status</th><th>Action</th>
+        </tr>
+        {% for h in houses %}
+        <tr>
+            <td>{{ h.id }}</td>
+            <td>{{ h.owner_name }}</td>
+            <td>{{ h.area }}</td>
+            <td>{{ h.city }}</td>
+            <td>₹{{ h.rent }}</td>
+            <td>{{ h.status }}</td>
+            <td>
+                <a href="/admin/delete_house/{{ h.id }}"
+                   onclick="return confirm('Delete this house?')">
+                   Delete
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</section>
+
+</body>
+</html>

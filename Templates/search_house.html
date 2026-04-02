@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <nav>
+        <h2>GHAR Search</h2>
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </nav>
+    <div class="container">
+        <form method="POST" style="display: flex; gap: 10px;">
+            <input type="text" name="city" placeholder="Enter City to search houses..." required>
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+
+        <div class="card-container">
+            {% for h in houses %}
+            <div class="card">
+                <h3>{{ h.area }}</h3>
+                <p>{{ h.city }}</p>
+                <p>Rent: ₹{{ h.rent }}</p>
+                <a href="{{ url_for('house_details', id=h.id) }}" class="btn btn-primary">View Details</a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

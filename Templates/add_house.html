@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container" style="max-width: 600px;">
+        <div class="card">
+            <h3>List Your Property</h3>
+            <form method="POST">
+                <input type="text" name="area" placeholder="Area (e.g. MG Road)" required>
+                <input type="text" name="city" placeholder="City" required>
+                <input type="number" name="rent" placeholder="Monthly Rent" required>
+                <input type="number" name="deposit" placeholder="Security Deposit" required>
+                <select name="tenant_type">
+                    <option value="Bachelor">Bachelor</option>
+                    <option value="Family">Family</option>
+                    <option value="Any">Any</option>
+                </select>
+                <h4>Features:</h4>
+                <label><input type="checkbox" name="water" value="Yes"> 24/7 Water</label>
+                <label><input type="checkbox" name="gas" value="Yes"> Gas Pipeline</label>
+                <label><input type="checkbox" name="electricity" value="Yes"> Electricity Backup</label>
+                <label><input type="checkbox" name="solar" value="Yes"> Solar Heater</label>
+                <label><input type="checkbox" name="wm" value="Yes"> Washing Machine Space</label>
+                <br><br>
+                <button type="submit" class="btn btn-primary">Post Property</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

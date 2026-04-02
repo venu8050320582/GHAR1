@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GHAR - Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <nav>
+        <h1>GHAR</h1>
+        <div>
+            <a href="{{ url_for('register') }}">Register</a>
+            <a href="{{ url_for('login') }}" class="btn btn-primary">Login</a>
+        </div>
+    </nav>
+    <div class="hero">
+        <h1>Find Your Perfect Home</h1>
+        <p>Lease, Rent, and Live better with GHAR.</p>
+        <br>
+        <a href="{{ url_for('login') }}" class="btn btn-primary">Start Searching</a>
+    </div>
+</body>
+</html>
